@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Linux笔记 | 楸坪的GitHub博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="点击这里查看鸟哥的Linux私房菜
+点击上面的链接跳转查看时,建议使用鼠标中键以免难以返回
+
+ls -al   a：所有；l：详细信息
+man： 显示用法
+权限
+chgrp: change group; 
+chown:change owner;
+chmod:改变权限 三个数字分别为 owner group others r:4 w:2 x:1
+
+-R ：递归，修改子目录所有的文件
+
+x对于文件来说是可执行，对目录来说是是否可切换到这个目录（cd命令）r可以读取列表（ls）
+目录属于用户，拥有744权限，目录下的文件对于用户来说权限都是7
+
+建立空档案： touch 也可以用于修改文件的时间
+Linux档案类型
+正规：- ...">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">楸坪的GitHub博客</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            秋风生渭水，落叶满长安。
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>Linux笔记</h1>
+        <div class="create">
+            <span>创建于</span>
+            
+                <time datetime="2020-04-20T11:00:00.000Z">
+                    2020-04-20
+                </time>
+            
+            
+        </div>
+        <p><a target="_blank" rel="noopener" href="http://cn.linux.vbird.org/">点击这里查看鸟哥的Linux私房菜</a></p>
+<p><strong>点击上面的链接跳转查看时,建议使用鼠标中键以免难以返回</strong></p>
+<hr>
+<p>ls -al   a：所有；l：详细信息</p>
+<p>man： 显示用法</p>
+<h3 id="权限"><a href="#权限" class="headerlink" title="权限"></a>权限</h3><ul>
+<li>chgrp: change group; </li>
+<li>chown:change owner;</li>
+<li>chmod:改变权限 三个数字分别为 owner group others r:4 w:2 x:1</li>
+</ul>
+<p>-R ：递归，修改子目录所有的文件</p>
+<ul>
+<li>x对于文件来说是可执行，对目录来说是是否可切换到这个目录（cd命令）r可以读取列表（ls）</li>
+<li>目录属于用户，拥有744权限，目录下的文件对于用户来说权限都是7</li>
+</ul>
+<p>建立空档案： touch 也可以用于修改文件的时间</p>
+<h2 id="Linux档案类型"><a href="#Linux档案类型" class="headerlink" title="Linux档案类型"></a>Linux档案类型</h2><ul>
+<li>正规：-  纯文本，二进制，数据格式文件（data）  </li>
+<li>目录：d  </li>
+<li>联结 l  link，类似于快捷方式  </li>
+<li>区块设备 block，b，硬盘软盘都是 </li>
+<li>字符设备文件 键盘鼠标 character，c</li>
+<li>资料接口 socket ；</li>
+<li>数据输送文件 FIFO，pipe， p ；脚本的扩展名是sh</li>
+</ul>
+<h2 id="路径："><a href="#路径：" class="headerlink" title="路径："></a>路径：</h2><ul>
+<li>绝对路径: 开头是&#x2F;</li>
+<li>相对路径:开头不是&#x2F;</li>
+<li>.&#x2F;表示本目录</li>
+<li>..&#x2F;表示上层目录</li>
+<li>-表示上个工作目录</li>
+<li>~home目录</li>
+<li>指令 cd(Change Directory)</li>
+<li>mkdir  -P忽视错误 -m777指定权限</li>
+<li>pwd Print Working Directory</li>
+<li>rmdir删除空目录</li>
+</ul>
+<p>ls:</p>
+<ul>
+<li><strong>-a 全部文件</strong></li>
+<li>t 时间排序</li>
+<li>S 文件大小排序</li>
+<li>r 倒序</li>
+<li>R 递归</li>
+<li><strong>-l 详细信息</strong></li>
+</ul>
+<p>cat  Concatenate （连续查看一个文件）</p>
+<ul>
+<li>-n,行号;-b,空行不占行号</li>
+<li>tac倒着输出行</li>
+<li>-v,显示看不见的字符</li>
+</ul>
+<p>chattr (配置文件隐藏属性)</p>
+<ul>
+<li>选项与参数：</li>
+<li><pre><code> +   ：添加某一个特殊参数，其他原本存在参数则不动.
+</code></pre>
+</li>
+<li><pre><code> -   ：移除某一个特殊参数，其他原本存在参数则不动。
+</code></pre>
+</li>
+<li><pre><code> =   ：配置一定，且仅有后面接的参数
+</code></pre>
+</li>
+<li>i 不能被删除,增删,改名</li>
+<li>a 只能添加数据</li>
+</ul>
+<p>lsattr (显示文件隐藏属性)</p>
+<p>file 观察文件类型</p>
+<hr>
+<h2 id="搜索文件"><a href="#搜索文件" class="headerlink" title="搜索文件"></a>搜索文件</h2><p>whereis  定位某个<strong>命令</strong> 的二进制文件、源码和帮助页文件。</p>
+<p>locate 定位的是<strong>文件</strong>.用的是数据库,默认每天更新一次,可以手动更新,命令是<strong>updatedb</strong> (我自己测试需要sudo)</p>
+<p>find 定位文件,搜索指定目录</p>
+<ul>
+<li>+4代表大於等於5天前的档名：ex&gt; find &#x2F;var -mtime +4</li>
+<li>-4代表小於等於4天内的文件档名：ex&gt; find &#x2F;var -mtime -4</li>
+<li>4则是代表4-5那一天的文件档名：ex&gt; find &#x2F;var -mtime 4</li>
+</ul>
+<hr>
+<h2 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h2><p>vim的操作特别多，我一般用IDE，只记录几个</p>
+<ul>
+<li>nG 去第n行</li>
+<li>gg 去第一行</li>
+<li>&#x2F; ? word 向下或向上查找word字符串</li>
+<li>n N 向下或向上接着查找刚才的字符串</li>
+<li>:n1,n2s&#x2F;word1&#x2F;word2&#x2F;g n1 与 n2 为数字。在第 n1 与 n2 行之间寻找 word1 这个字符串，并将该字符串取代为 word2！举例来说，在 100 到 200 行之间搜寻 vbird 并取代为 VBIRD 则：<br>『:100,200s&#x2F;vbird&#x2F;VBIRD&#x2F;g』。(常用)</li>
+<li>上面的g改为gc,每个替换之前会要求用户确认</li>
+<li>yy 复制一行</li>
+<li>p 粘贴</li>
+<li>u undo,撤销</li>
+<li>Ctrl+r 重做</li>
+</ul>
+<hr>
+<ul>
+<li>:w [filename]    将编辑的数据储存成另一个档案（类似另存新档）</li>
+<li>:r [filename]在编辑的数据中，读入另一个档案的数据。亦即将 『filename』 这个档案内容加到游标所在行后面</li>
+</ul>
+<hr>
+<ul>
+<li>ctrl+z 暂存并离开</li>
+</ul>
+<hr>
+<h2 id="bash"><a href="#bash" class="headerlink" title="bash"></a>bash</h2><hr>
+
+        <div>
+            <ul class="tags-category-list" itemprop="keywords"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2020/04/20/Linux%E7%9A%84%E5%B0%8F%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                Linux的小笔记
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2020/04/20/%E8%85%BE%E8%AE%AF%E9%9D%A2%E8%AF%95%E5%88%B7%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        腾讯面试刷题
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+            <div id="stageComment" class="comment" style="margin-top: 27px;"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var notify = 'true' == true ? true : false;
+  var verify = 'false' == true ? true : false;
+  window.onload = function() {
+    new Valine({
+      el: '#stageComment',
+      notify: notify,
+      verify: verify,
+      app_id: "GV9bOGJTE9kej1irLoW8D7PK-gzGzoHsz",
+      app_key: "U1kgYRmAKV1vwWYQqo2W1wze",
+      placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+      avatar:"mm"
+    });
+  }
+</script>
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>文章目录</h2>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%83%E9%99%90"><span class="toc-number">1.</span> <span class="toc-text">权限</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E6%A1%A3%E6%A1%88%E7%B1%BB%E5%9E%8B"><span class="toc-number"></span> <span class="toc-text">Linux档案类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">路径：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E6%96%87%E4%BB%B6"><span class="toc-number"></span> <span class="toc-text">搜索文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vim"><span class="toc-number"></span> <span class="toc-text">vim</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bash"><span class="toc-number"></span> <span class="toc-text">bash</span></a>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; Wentao Hao  2022</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>

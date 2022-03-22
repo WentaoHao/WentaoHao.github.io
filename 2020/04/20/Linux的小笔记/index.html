@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Linux的小笔记 | 楸坪的GitHub博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="点击这里查看鸟哥的Linux私房菜
+点击上面的链接跳转查看时,建议使用鼠标中键以免难以返回
+
+从后台启动进程，应在命令的结尾加上哪个符号  &amp;amp;
+shell脚本 命令行 参数:
+
+$0表示脚本名,$1 -$9表示后面的参数
+$# 是传给脚本的参数个数
+$@ 是传给脚本的所有参数的列表
+$* 是以一个单字符串显示所有向脚本传递的参数，与位置变量不同，参数可超过9个
+$$ 是脚本运行的当前进程ID号
+$? 是显示最后命令的退出状态，0表示没有错误，其他表示有错误
+
+ 升级物理内存,相应的要提高linux服务器交换空间,以下可以扩展交换空间的操作 dd if&amp;#x3D;&amp;#x2F;dev&amp;#x2F;zero of&amp;#x3...">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">楸坪的GitHub博客</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            此生棠棣开荼蘼，三遍荣华不如你。
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>Linux的小笔记</h1>
+        <div class="create">
+            <span>创建于</span>
+            
+                <time datetime="2020-04-20T11:00:01.000Z">
+                    2020-04-20
+                </time>
+            
+            
+        </div>
+        <p><a target="_blank" rel="noopener" href="http://cn.linux.vbird.org/">点击这里查看鸟哥的Linux私房菜</a></p>
+<p><strong>点击上面的链接跳转查看时,建议使用鼠标中键以免难以返回</strong></p>
+<hr>
+<p>从后台启动进程，应在命令的结尾加上哪个符号  &amp;</p>
+<p>shell脚本 命令行 参数:</p>
+<ul>
+<li>$0表示脚本名,$1 -$9表示后面的参数</li>
+<li>$# 是传给脚本的参数个数</li>
+<li>$@ 是传给脚本的所有参数的列表</li>
+<li>$* 是以一个单字符串显示所有向脚本传递的参数，与位置变量不同，参数可超过9个</li>
+<li>$$ 是脚本运行的当前进程ID号</li>
+<li>$? 是显示最后命令的退出状态，0表示没有错误，其他表示有错误</li>
+</ul>
+<p> 升级物理内存,相应的要提高linux服务器交换空间,以下可以扩展交换空间的操作 dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;mnt&#x2F;sw1;swapon &#x2F;mnt&#x2F;sw1</p>
+<p> 将这个自定义注册项添加到一个组策略对象（GPO）: 配置一个ADM模板并把模板添加到GPO</p>
+<p><strong>解析</strong>: ADM 文件是组策略用以描述基于注册表的策略设置在注册表中的存储位置的模板文件。ADM 文件还描述了管理员在“组策略对象编辑器”管理单元中看到的用户界面。管理员使用组策略对象编辑器创建或修改组策略对象 (GPO)。</p>
+<ul>
+<li>系统当前已经加载的所有文件系统 &#x2F;etc&#x2F;mtab</li>
+<li>etc&#x2F;fstab文件的作用 ：记录了计算机上硬盘分区的相关信息，启动 Linux 的时候，检查分区的 fsck 命令，和挂载分区的 mount 命令，都需要 fstab 中的信息，来正确的检查和挂载硬盘。</li>
+</ul>
+<p>top查看cpu使用</p>
+<p>df查看磁盘使用</p>
+<p>rsync (远程)拷贝文件用的</p>
+<p>wget 下载文件 </p>
+<p>scp 复制远程文件</p>
+<p>将执行的ls命令的输出结果保存在当前目录下文件output.ls中，以供日后进行分析和使用，但要求不覆盖原文件的内容，他应该使用的命令是</p>
+<ul>
+<li>ls&gt;&gt;output.ls</li>
+<li>|(没有竖线)    &gt;        输出重定向到一个文件或设备 覆盖原来的文件</li>
+<li>|&gt;!              输出重定向到一个文件或设备 强制覆盖原来的文件</li>
+<li>|&gt;&gt;             输出重定向到一个文件或设备 追加原来的文件</li>
+<li>|&lt;               输入重定向到一个程序</li>
+</ul>
+<hr>
+
+        <div>
+            <ul class="tags-category-list" itemprop="keywords"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2020/04/21/linux%E7%AC%94%E8%AE%B02/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                Linux笔记2-Bash
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2020/04/20/Linux%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        Linux笔记
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+            <div id="stageComment" class="comment" style="margin-top: 27px;"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var notify = 'true' == true ? true : false;
+  var verify = 'false' == true ? true : false;
+  window.onload = function() {
+    new Valine({
+      el: '#stageComment',
+      notify: notify,
+      verify: verify,
+      app_id: "GV9bOGJTE9kej1irLoW8D7PK-gzGzoHsz",
+      app_key: "U1kgYRmAKV1vwWYQqo2W1wze",
+      placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+      avatar:"mm"
+    });
+  }
+</script>
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>目录都去哪了...</h2>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; Wentao Hao  2022</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>

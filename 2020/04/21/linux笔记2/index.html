@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Linux笔记2-Bash | 楸坪的GitHub博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="Bash
+查看进程们  ps 
+-l 可以显示 详细信息
+
+
+daemon(服务) 守护进程,常驻内存的程序.主要是系统的程序和网络有关的程序.
+数据流重导向标准输入　　(stdin) ：代码为 0 ，使用 &amp;lt; 或 &amp;lt;&amp;lt; ；
+标准输出　　(stdout)：代码为 1 ，使用 &amp;gt; 或 &amp;gt;&amp;gt; ；
+标准错误输出(stderr)：代码为 2 ，使用 2&amp;gt; 或 2&amp;gt;&amp;gt; ；
+一个&amp;gt;是覆盖写入文件,两个&amp;gt;&amp;gt;是累加写入文件,命令当有输出的时候,可以用&amp;gt;来把输出接住,放到后面的文件里面,比如:
+ls 1&amp;gt;&amp;gt; files //1表示正确信息,2表示错误...">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">楸坪的GitHub博客</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            你本无意穿堂风，偏偏孤据引山洪。
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>Linux笔记2-Bash</h1>
+        <div class="create">
+            <span>创建于</span>
+            
+                <time datetime="2020-04-21T09:00:00.000Z">
+                    2020-04-21
+                </time>
+            
+            
+        </div>
+        <h1 id="Bash"><a href="#Bash" class="headerlink" title="Bash"></a>Bash</h1><ul>
+<li>查看进程们  ps </li>
+<li>-l 可以显示 详细信息</li>
+</ul>
+<hr>
+<p>daemon(服务) 守护进程,常驻内存的程序.主要是系统的程序和网络有关的程序.</p>
+<h2 id="数据流重导向"><a href="#数据流重导向" class="headerlink" title="数据流重导向"></a>数据流重导向</h2><p>标准输入　　(stdin) ：代码为 0 ，使用 &lt; 或 &lt;&lt; ；</p>
+<p>标准输出　　(stdout)：代码为 1 ，使用 &gt; 或 &gt;&gt; ；</p>
+<p>标准错误输出(stderr)：代码为 2 ，使用 2&gt; 或 2&gt;&gt; ；</p>
+<p>一个&gt;是覆盖写入文件,两个&gt;&gt;是累加写入文件,命令当有输出的时候,可以用&gt;来把输出接住,放到后面的文件里面,比如:</p>
+<pre><code>ls 1&gt;&gt; files //1表示正确信息,2表示错误信息,这句话把ls的输出存在了files里面
+
+cat &gt; catfile  //此命令后,输入一些字符,按ctrl+d即可保存字符到catfile里面
+</code></pre>
+<p>&lt;的作用: 用文件代替一个键盘输入,比如:</p>
+<pre><code>cat &gt; catfile2 &lt; catfile  //本来应该是前两个以后按键盘输入,写入catfile2,但是实际上,并不需要键盘,而是将后面的catfile的内容写到了catfile2里面
+</code></pre>
+<p>&lt;&lt;的作用:</p>
+<pre><code>cat &gt; catfile &lt;&lt;&quot;string&quot; //输入string,即可结束输入,而不是ctrl+d,而且,最终的文件并不包含string
+</code></pre>
+<h2 id="命令运行的判断依据：-amp-amp"><a href="#命令运行的判断依据：-amp-amp" class="headerlink" title="命令运行的判断依据： ; , &amp;&amp;, ||"></a>命令运行的判断依据： ; , &amp;&amp;, ||</h2><p>用;把命令隔开,可以一次(并不是同时)运行好几个命令</p>
+<pre><code>cmd1 ; cmd2 //经过测试,这里分号前后不需要空格
+</code></pre>
+<p>cmd1执行完了马上执行cmd2</p>
+<p>程序运行返回值是$?,利用返回值可以在命令中进行类似if else的操作,比如:</p>
+<pre><code>cmd1 || cmd2 //经过测试,这里前后也不需要空格
+</code></pre>
+<p>cmd1运行成功(失败是,比如某个文件不存在之类的),则cmd2就不运行了</p>
+<pre><code>cmd1 &amp;&amp; cmd2
+</code></pre>
+<p>cmd1运行成功,cmd2才会运行</p>
+<p>有多个命令连接的时候,如果有一个没有运行,那么他的上一个的返回值会接着传到后面.</p>
+<h2 id="管线命令-pipe"><a href="#管线命令-pipe" class="headerlink" title="管线命令 (pipe)"></a>管线命令 (pipe)</h2><h3 id=""><a href="#" class="headerlink" title="|"></a>|</h3><pre><code>cmd1|cmd2
+</code></pre>
+<p>将cmd1的输出作为cmd2的输入,比如</p>
+<pre><code>ls | less
+</code></pre>
+<p>如果文件太多,就可以通过这样<strong>前后翻阅</strong></p>
+<ul>
+<li>管线命令只能接收正确的输出(stdout),而错误(stderr)会被忽略</li>
+</ul>
+
+        <div>
+            <ul class="tags-category-list" itemprop="keywords"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2020/04/23/linux-alias-legion-wifi/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                Linux别名alias的用法以及联想拯救者没有WiFi的解决方法
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2020/04/20/Linux%E7%9A%84%E5%B0%8F%E7%AC%94%E8%AE%B0/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        Linux的小笔记
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+            <div id="stageComment" class="comment" style="margin-top: 27px;"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var notify = 'true' == true ? true : false;
+  var verify = 'false' == true ? true : false;
+  window.onload = function() {
+    new Valine({
+      el: '#stageComment',
+      notify: notify,
+      verify: verify,
+      app_id: "GV9bOGJTE9kej1irLoW8D7PK-gzGzoHsz",
+      app_key: "U1kgYRmAKV1vwWYQqo2W1wze",
+      placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+      avatar:"mm"
+    });
+  }
+</script>
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>文章目录</h2>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Bash"><span class="toc-number">1.</span> <span class="toc-text">Bash</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E9%87%8D%E5%AF%BC%E5%90%91"><span class="toc-number">1.1.</span> <span class="toc-text">数据流重导向</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%BF%90%E8%A1%8C%E7%9A%84%E5%88%A4%E6%96%AD%E4%BE%9D%E6%8D%AE%EF%BC%9A-amp-amp"><span class="toc-number">1.2.</span> <span class="toc-text">命令运行的判断依据： ; , &amp;&amp;, ||</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%BA%BF%E5%91%BD%E4%BB%A4-pipe"><span class="toc-number">1.3.</span> <span class="toc-text">管线命令 (pipe)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.3.1.</span> <span class="toc-text">|</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; Wentao Hao  2022</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>

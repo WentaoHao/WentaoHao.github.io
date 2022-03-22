@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>腾讯面试刷题 | 楸坪的GitHub博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="###压缩算法-腾讯2020第一次校园招聘后台综合笔试 
+小Q想要给他的朋友发送一个神秘字符串，但是他发现字符串的过于长了，于是小Q发明了一种压缩算法对字符串中重复的部分进行了压缩，对于字符串中连续的m个相同字符串S将会压缩为[m|S](m为一个整数且1&amp;lt;&amp;#x3D;m&amp;lt;&amp;#x3D;100)，例如字符串ABCABCABC将会被压缩为[3|ABC]，现在小Q的同学收到了小Q发送过来的字符串，你能帮助他进行解压缩么？
+输入描述:
+输入第一行包含一个字符串s，代表压缩后的字符串。
+S的长度&amp;lt;&amp;#x3D;1000;
+S仅包含大写字母、[、]、|;
+解压后的字符串长度不超过100000;
+压缩递归层数不超过10层...">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">楸坪的GitHub博客</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            云里写诗，泥里生活，岁月里洒脱。
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>腾讯面试刷题</h1>
+        <div class="create">
+            <span>创建于</span>
+            
+                <time datetime="2020-04-20T10:59:59.000Z">
+                    2020-04-20
+                </time>
+            
+            
+        </div>
+        <p>###压缩算法-腾讯2020第一次校园招聘后台综合笔试 </p>
+<p>小Q想要给他的朋友发送一个神秘字符串，但是他发现字符串的过于长了，于是小Q发明了一种压缩算法对字符串中重复的部分进行了压缩，对于字符串中连续的m个相同字符串S将会压缩为[m|S](m为一个整数且1&lt;&#x3D;m&lt;&#x3D;100)，例如字符串ABCABCABC将会被压缩为[3|ABC]，现在小Q的同学收到了小Q发送过来的字符串，你能帮助他进行解压缩么？</p>
+<p>输入描述:</p>
+<p>输入第一行包含一个字符串s，代表压缩后的字符串。</p>
+<p>S的长度&lt;&#x3D;1000;</p>
+<p>S仅包含大写字母、[、]、|;</p>
+<p>解压后的字符串长度不超过100000;</p>
+<p>压缩递归层数不超过10层;</p>
+<p>输出描述:</p>
+<p>输出一个字符串，代表解压后的字符串。</p>
+<p>示例1</p>
+<p>输入</p>
+<p>HG[3|B[2|CA]]F</p>
+<p>输出</p>
+<p>HGBCACABCACABCACAF</p>
+<p>说明</p>
+<p>HG[3|B[2|CA]]F−&gt;HG[3|BCACA]F−&gt;HGBCACABCACABCACAF</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38677031/article/details/103980602">点击这里查看CSDN解法</a></p>
+<p>我的解法:每次替换一对[];java的replace是替换字符串并且不改变原有字符串,所以替换务必再赋值,replaceAll是正则表达式替换,因此应该使用replace;subString方法左闭右开</p>
+<p>&#96;&#96;&#96;java</p>
+<p>package com.company;<br>import java.util.*;<br>public class Main {</p>
+<pre><code>public static void main(String[] args) &#123;
+
+
+    Scanner scanner=new Scanner(System.in);
+    String string=new String();
+    string = scanner.nextLine();
+    for(int i=0;i&lt;string.length();i++)&#123;
+        if(&#39;]&#39;==string.charAt(i))&#123;      //  i是]
+            int j=i;
+            int k=0;
+            while(&#39;[&#39;!=string.charAt(j))&#123;
+                if(&#39;|&#39;==string.charAt(j))&#123;
+                    k=j;                //  k是|
+                &#125;
+                j--;                    //j 是[,不是[的上一个
+            &#125;
+            int len=Integer.parseInt(string.substring(j+1,k));
+
+            //System.out.println(len);
+
+            StringBuilder stringBuilder=new StringBuilder();
+            for(int i2=0;i2&lt;len;i2++)&#123;
+                stringBuilder.append(string.substring(k+1,i));
+            &#125;
+
+            //System.out.println(stringBuilder.toString());
+            //System.out.println(string.substring(j,i+1));
+
+            string=string.replace(string.substring(j,i+1),stringBuilder.toString());
+            //替换务必赋值
+
+            //System.out.println(string);
+
+            i=j;
+        &#125;
+
+    &#125;
+    System.out.println(string);
+    //System.out.println(sol.numWays(2));
+    //System.out.println(&quot;%2&quot;);
+    //int a=1294967299;
+    //System.out.println(sol.myAtoi(&quot;-321.14&quot;));
+    // write your code her
+
+&#125;
+</code></pre>
+<p>}</p>
+<p>&#96;&#96;&#96;java</p>
+
+        <div>
+            <ul class="tags-category-list" itemprop="keywords"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/%E5%88%B7%E9%A2%98/" rel="tag">刷题</a></li></ul>
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2020/04/20/Linux%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                Linux笔记
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2020/04/20/SwordToOffer/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        剑指offer刷题记录
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+            <div id="stageComment" class="comment" style="margin-top: 27px;"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var notify = 'true' == true ? true : false;
+  var verify = 'false' == true ? true : false;
+  window.onload = function() {
+    new Valine({
+      el: '#stageComment',
+      notify: notify,
+      verify: verify,
+      app_id: "GV9bOGJTE9kej1irLoW8D7PK-gzGzoHsz",
+      app_key: "U1kgYRmAKV1vwWYQqo2W1wze",
+      placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+      avatar:"mm"
+    });
+  }
+</script>
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>目录都去哪了...</h2>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; Wentao Hao  2022</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>

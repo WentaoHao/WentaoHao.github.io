@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>端口1080占用的解决方法 | 楸坪的GitHub博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="启动shadow rocket R 提示1080端口被占用,直接重启windows不管用
+1 cmd 输入
+netstat -aon|findstr &amp;quot;1080&amp;quot;
+
+2 查看pid,到任务管理器的详细信息页面,找到对应pid结束任务
+这里去任务管理器太麻烦,直接cmd输入以下命令,如果这是个子进程的话需要加-f选项
+1taskkill /pid 9396 -t -f
+
+其中9596是刚才看到的pid,改一下即可
+3 重启srr,提示已经运行了一份,在托盘退出,重启.如果不行的话,到任务管理器按名称排序,结束任务
+4 重启srr 
+">
+    
+        <link rel="icon" href="/favicon.ico">
+    
+    
+        
+            <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        
+            <link rel="stylesheet" href="/css/stage.css">
+        
+            <link rel="stylesheet" href="/css/avatar-bg.css">
+        
+    
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+<header id="header">
+    <div class="menu">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="header-main">
+        <h1><a href="/">楸坪的GitHub博客</a></h1>
+    </div>
+    <div id="nav">
+        <div class="nav-img" id="nav-img"></div>
+        <div class="sentences">
+            时光荏苒，旦夕之间，略有遗憾，似白驹过隙，蹉跎自悟。
+        </div>
+    </div>
+</header>
+
+<div id="content-outer">
+    <div id="content-inner">
+        <div class="clearfix">
+    <article id="post">
+        <h1>端口1080占用的解决方法</h1>
+        <div class="create">
+            <span>创建于</span>
+            
+                <time datetime="2020-05-20T04:00:47.000Z">
+                    2020-05-20
+                </time>
+            
+            
+        </div>
+        <p>启动shadow rocket R 提示1080端口被占用,直接重启windows不管用</p>
+<p>1 cmd 输入</p>
+<pre><code>netstat -aon|findstr &quot;1080&quot;
+</code></pre>
+<p>2 查看pid,到任务管理器的详细信息页面,找到对应pid结束任务</p>
+<p>这里去任务管理器太麻烦,直接cmd输入以下命令,如果这是个子进程的话需要加-f选项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskkill /pid 9396 -t -f</span><br></pre></td></tr></table></figure>
+
+<p>其中9596是刚才看到的pid,改一下即可</p>
+<p>3 重启srr,提示已经运行了一份,在托盘退出,重启.如果不行的话,到任务管理器按名称排序,结束任务</p>
+<p>4 重启srr </p>
+
+        <div>
+            <ul class="tags-category-list" itemprop="keywords"><li class="tags-category-list-item"><a class="tags-category-list-link" href="/tags/%E7%94%B5%E8%84%91%E7%9A%84%E5%B0%8F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" rel="tag">电脑的小问题解决方法</a></li></ul>
+        </div>
+        <div class="bottom-line"></div>
+        
+    <nav id="article-nav">
+        
+            <a href="/2020/05/21/%C2%96win10%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%BF%90%E8%A1%8Cpython%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+        <span class="article-nav-title">
+            
+                win10命令行运行python问题
+            
+        </span>
+                <strong class="article-nav-caption">&gt;</strong>
+            </a>
+        
+        
+            <a href="/2020/05/07/%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%953/" id="article-nav-older" class="article-nav-link-wrap">
+                <strong class="article-nav-caption">&lt;</strong>
+                <span class="article-nav-title">
+                    
+                        LeetCode刷题记录3
+                </span>
+                
+            </a>
+        
+    </nav>
+
+
+        
+            <div id="stageComment" class="comment" style="margin-top: 27px;"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+  var notify = 'true' == true ? true : false;
+  var verify = 'false' == true ? true : false;
+  window.onload = function() {
+    new Valine({
+      el: '#stageComment',
+      notify: notify,
+      verify: verify,
+      app_id: "GV9bOGJTE9kej1irLoW8D7PK-gzGzoHsz",
+      app_key: "U1kgYRmAKV1vwWYQqo2W1wze",
+      placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+      avatar:"mm"
+    });
+  }
+</script>
+
+        
+    </article>
+    <div id="toc">
+        
+            <h2>目录都去哪了...</h2>
+        
+    </div>
+</div>
+
+    </div>
+</div>
+<footer id="footer">
+    <div id="copyright">&copy; Wentao Hao  2022</div>
+    <div id="theme">
+        Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>. Theme by <a target="_blank" rel="noopener" href="https://github.com/markyong/hexo-theme-stage">Stage</a>
+    </div>
+</footer>
+<script src="/lib/js/waterrippleeffect.min.js"></script>
+<script src="/js/header-bg.main.js"></script>
+
+    <script src="/lib/js/smooth-scroll.min.js"></script>
+    <script src="/js/toc.main.js"></script>
+
+</body>
+</html>
